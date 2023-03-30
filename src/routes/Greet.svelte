@@ -1,16 +1,20 @@
-<script>
-  import { invoke } from '@tauri-apps/api/tauri'
+<script lang="ts">
+  import { CrossProcessHandler } from '$lib/CrossProcess'
+  import { createQuery } from '@tanstack/svelte-query'
+
+
+  const handler = new CrossProcessHandler()
 
   let name = ''
-  let greetMsg = ''
 
-  async function greet() {
-    greetMsg = await invoke('greet', { name })
-  }
+  $: query = createQuery({
+    queryKey: ['greet', name],
+    queryFn: async () => await handler.invokeGreeting(name),
+    enabled: !!name,
+  })
 </script>
 
 <div>
   <input id="greet-input" placeholder="Enter a name..." bind:value="{name}" />
-  <button on:click="{greet}">Greet</button>
-  <p>{greetMsg}</p>
+  <p>{$query.data}</p>
 </div>
