@@ -7,7 +7,7 @@
     "distDir": "../build"
   },
   "package": {
-    "productName": "twitch-vox",
+    "productName": "Twitch Vox",
     "version": "0.1.0"
   },
   "tauri": {
@@ -29,8 +29,8 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
-      "longDescription": "",
+      "identifier": "com.dukeferdinand.dev",
+      "longDescription": "A ",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
